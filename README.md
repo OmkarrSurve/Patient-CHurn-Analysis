@@ -48,7 +48,7 @@ Hospitals typically treat a patient and discharge them without any systematic wa
 
 | Tool | Version | Purpose |
 |---|---|---|
-| PostgreSQL | 15+ | Data storage, SQL queries, feature engineering |
+| PostgreSQL | 18 | Data storage, SQL queries, feature engineering |
 | pgAdmin 4 | Latest | PostgreSQL GUI client |
 | Microsoft Excel | 2019/365 | RFM scoring, churn formulas, pivot validation |
 | Power BI Desktop | Latest | Interactive dashboard and visualisations |
@@ -303,43 +303,6 @@ CALCULATE(
 Avg Days Since Visit =
 ROUND(AVERAGE(churn_model[days_since_last_visit]), 0)
 ```
-
-### Conditional Formatting (Page 3 — At-Risk Table)
-
-```dax
-Risk Color =
-SWITCH(
-    SELECTEDVALUE(churn_model[Risk Segment]),
-    "Critical",     "#FF4444",
-    "High Risk",    "#FF8C00",
-    "Medium Risk",  "#FFD700",
-    "Low Risk",     "#00C853",
-    "#FFFFFF"
-)
-
-Risk Font Color =
-SWITCH(
-    SELECTEDVALUE(churn_model[Risk Segment]),
-    "Critical",     "#FFFFFF",
-    "High Risk",    "#FFFFFF",
-    "Medium Risk",  "#000000",
-    "Low Risk",     "#000000",
-    "#000000"
-)
-```
-
-Apply via: Format pane → Cell elements → Background color → **fx** → Field value → `Risk Color`
-
-### Dashboard Pages
-
-| Page | Visuals |
-|---|---|
-| Executive Overview | KPI cards (Total Patients, Churn Rate %, Revenue at Risk, Active Patients), Donut (Active vs Churned), Bar (churn by medical condition), Line (monthly trend) |
-| Risk Segments | Donut (patients by risk segment), Stacked bar (billing by segment), Matrix (risk × insurer), Bar (risk by gender) |
-| At-Risk Patient List | Table sorted by churn_score ASC with conditional row colouring by risk |
-| Slicers (all pages) | insurance_provider, medical_condition, gender, admission_type |
-
----
 
 ## Churn Definition
 
