@@ -248,13 +248,13 @@ FROM rfm_scored
 ORDER BY churn_score ASC;
 ```
 
-> Export: right-click the results grid in pgAdmin → **Download as CSV** → save as `churn_model.csv`
+> Export: Select every column from the results along with the entire data values and paste it in excel.
 
 ---
 
 ## Phase 2 — Excel: RFM Scoring & Segmentation
 
-Open `churn_model.csv` in Excel and save as `churn_model.xlsx`. Add two new columns at the end:
+Open Excel, Paste the final result save as `churn_model.csv`. Add two new columns at the end:
 
 ### Risk Segment
 ```excel
@@ -324,9 +324,9 @@ RFM is a proven customer analytics framework adapted here for healthcare:
 
 | Dimension | Definition | Weight | Rationale |
 |---|---|---|---|
-| **Recency** | Days since last discharge | 40% | Most important — recent patients are most re-engageable |
-| **Frequency** | Total number of admissions | 35% | Frequent patients show hospital loyalty |
-| **Monetary** | Total billing amount (INR) | 25% | High-value patients worth prioritising for retention |
+| **Recency** | Days since last discharge | 12.5% | Most important — recent patients are most re-engageable |
+| **Frequency** | Total number of admissions | 36% | Frequent patients show hospital loyalty |
+| **Monetary** | Total billing amount (INR) | 30% | High-value patients worth prioritising for retention |
 
 ### Recency Score Thresholds
 
@@ -400,7 +400,7 @@ hospital-churn-prediction/
 │   └── hospital_churn.sql             ← All queries in one file (run top to bottom)
 │
 ├── excel/
-│   └── churn_model.xlsx               ← Risk segment + probability columns + pivot
+│   └── churn_model.csv               ← Risk segment + probability columns + pivot
 │
 ├── powerbi/
 │   └── hospital_churn_dashboard.pbix  ← Full Power BI dashboard
